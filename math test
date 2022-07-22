@@ -1,0 +1,200 @@
+import turtle as t
+import time
+
+t.up()                          #터틀그래픽 창에 그림이 그려지지 않도록 한다.
+t.setup(539, 700)       #터틀그래픽 창의 크기를 조절한다.
+test="test7.gif"          #변수test에 시험지 사진을 넣는다.
+
+x=0
+y=0         #클릭한 좌표 변수x,y를 선언한다.
+cn1=0
+cn2=0
+cn3=0
+cn4=0
+cn5=0
+cn6=0       #해당 번호 문제를 풀었는지 확인하는 변수를 선언한다.
+
+
+
+
+def clicked(x,y):        #무조건 x,y를 매개변수로 해야한다.(클릭받은 좌표)
+    global cn1
+    global cn2
+    global cn3
+    global cn4
+    global cn5              #외부에서 선언된 변수를 
+    global cn6              #clicked()함수에서 사용할 수 있도록 한다.
+
+    test_print()            #test_print()함수를 실행시킨다.
+    
+    if x<-10 and 50<y<225:          #문제1 좌표
+        
+        if cn1==0:                                                              #cn1이 0이면, 문제1을 푼 적이 없다면,                
+            answer1=t.numinput("1번 문제", "답(1~5) : ",0,1,5)      #사용자에게 문제1 답을 입력받는다.
+            
+            if answer1==4:              #사용자에게 4를 입력받았다면
+                t.goto(-235, 180)      #거북이를 해당 좌표로 움직인다.
+                grade()                      #grade()함수를 실행한다.
+                
+            else:
+                exp="ex1.gif"           #변수 exp에 해설 사진을 넣는다.
+                t.addshape(exp)       #exp를 터틀로 지정할 수 있는 모양 목록에 넣는다.
+                t.shape(exp)             #터틀의 모양을 exp로 지정한다. 
+                t.undo()                    #터틀의 마지막 행동을 되돌린다.
+            cn1=1                           #cn1을 1
+
+        else:                                                                      #cn1이 1이면, 문제1을 푼 적이 있다면,
+            t.goto(-250,215)                                               #거북이를 해당 좌표로 움직인다.
+            t.write("이미 푼 문제는 다시 풀 수 없습니다.")        #터틀그래픽 창에 해당 문구를 띄운다.
+            time.sleep(2)                                                    #2초간 프로세스를 지연시킨다.
+            t.undo()                                                             #터틀의 마지막 행동을 되돌린다.
+
+    #문제1과 비슷한 코드를 문제6까지 반복한다.
+        
+    elif x<-10 and y<50 and y>-140:       #문제2 좌표
+
+        if cn2==0:      
+            answer2=t.numinput("2번 문제", "답(1~5) : ",0,1,5)
+
+            if answer2==2:
+                t.goto(-235, 5)
+                grade()
+                
+            else:
+                exp="ex2.gif"
+                t.addshape(exp)    
+                t.shape(exp)
+                t.undo()
+            cn2=1
+
+        else:
+            t.goto(-250,40)
+            t.write("이미 푼 문제는 다시 풀 수 없습니다.")
+            time.sleep(2)
+            t.undo()
+            
+        
+    elif x<-10 and y<-140:            #문제3 좌표
+        
+        if cn3==0:
+            answer3=t.numinput("3번 문제", "답(1~5) : ",0,1,5)
+            
+            if answer3==2:
+                t.goto(-235, -190)
+                grade()
+                
+            else:
+                exp="ex3.gif"
+                t.addshape(exp)    
+                t.shape(exp)
+                t.undo()
+            cn3=1
+
+        else:
+            t.goto(-250,-150)
+            t.write("이미 푼 문제는 다시 풀 수 없습니다.")
+            time.sleep(2)
+            t.undo()
+        
+            
+    elif x>-10 and y<225 and y>30:        #문제4 좌표
+        
+        if cn4==0:
+            answer4=t.numinput("4번 문제", "답(1~5) : ",0,1,5)
+            
+            if answer4==3:
+                t.goto(10, 180)
+                grade()
+                
+            else:
+                exp="ex4.gif"
+                t.addshape(exp)    
+                t.shape(exp)
+                t.undo()
+            cn4=1
+
+        else:
+            t.goto(-15,215)
+            t.write("이미 푼 문제는 다시 풀 수 없습니다.")
+            time.sleep(2)
+            t.undo()
+            
+        
+    elif x>-10 and y<30 and y>-190:       #문제5 좌표
+        
+        if cn5==0:
+            answer5=t.numinput("5번 문제", "답(1~5) : ",0,1,5)
+
+            if answer5==3:
+                t.goto(10, -15)
+                grade()
+                
+            else:
+                exp="ex5.gif"
+                t.addshape(exp)    
+                t.shape(exp)
+                t.undo()
+            cn5=1
+
+        else:
+            t.goto(-15,30)
+            t.write("이미 푼 문제는 다시 풀 수 없습니다.")
+            time.sleep(2)
+            t.undo()
+
+
+    elif x>-10 and y<-190:            #문제6 좌표
+        
+        if cn6==0:
+            answer6=t.numinput("6번 문제", "답(1~5) : ",0,1,5)
+
+            if answer6==5:
+                t.goto(10, -238)
+                grade()
+                
+            else:
+                exp="ex6.gif"
+                t.addshape(exp)    
+                t.shape(exp)
+                t.undo()
+            cn6=1
+
+        else:
+            t.goto(-15,-200)
+            t.write("이미 푼 문제는 다시 풀 수 없습니다.")
+            time.sleep(2)
+            t.undo()
+            
+
+def test_print():
+    t.goto(0,0)               #거북이를 해당 좌표로 움직인다.
+    t.addshape(test)     #test를 터틀로 지정할 수 있는 모양 목록에 넣는다.
+    t.shape(test)           #터틀의 모양을 test로 지정한다.
+    t.stamp()                 #현재 위치에 터틀 모양을 찍는다. 
+
+def grade():
+    t.down()                  #터틀그래픽 창에 그림이 그려지도록 한다.
+    t.circle(30)             #반지름 50인 크기의 원을 그려낸다.
+    time.sleep(1)          #1초간 프로세스를 지연시킨다.
+    t.undo()                  #터틀의 마지막 행동을 되돌린다.
+    t.up()                      #터틀그래픽 창에 그림이 그려지지 않도록 한다.
+
+
+
+
+test_print()                                #test_print()함수를 실행시킨다.
+t.color("red")                            #거북이가 그리는 그림의 색을 "red"로 지정한다.
+t.onscreenclick(clicked)          #마우스를 클릭하면 clicked()함수를 실행한다.
+t.listen()                                    #터틀그래픽 창에 포커스를 두고 이벤트를 확인한다.
+
+
+
+
+
+
+
+
+
+
+
+
